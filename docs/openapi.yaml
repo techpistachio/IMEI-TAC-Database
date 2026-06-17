@@ -1,0 +1,42 @@
+openapi: 3.0.3
+info:
+  title: TACDatabase Public API
+  version: 1.0.0
+  description: Public TAC lookup API with API-key authentication.
+servers:
+  - url: https://api.yourdomain.com
+paths:
+  /v1/health:
+    get:
+      summary: Health check
+      responses:
+        "200":
+          description: OK
+  /v1/tac/{tac}:
+    get:
+      summary: Lookup a TAC
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: tac
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^[0-9]{8}$'
+      responses:
+        "200":
+          description: TAC found
+        "401":
+          description: Invalid or missing API key
+        "404":
+          description: TAC not found
+        "429":
+          description: Rate limit exceeded
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+
