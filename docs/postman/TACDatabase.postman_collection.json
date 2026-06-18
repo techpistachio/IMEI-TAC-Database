@@ -1,0 +1,138 @@
+{
+  "info": {
+    "_postman_id": "8f1d8a8e-1c11-4a72-8c9f-7d6d0f0b4d4c",
+    "name": "IMEI TAC Database Public API",
+    "description": "Free TAC lookup API for approved users. Set baseUrl and apiKey after importing.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/v1/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["v1", "health"]
+        },
+        "description": "Verify the API is online."
+      },
+      "response": [
+        {
+          "name": "Healthy",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["v1", "health"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": true,\n  \"status\": \"ok\",\n  \"service\": \"tacdatabase\",\n  \"version\": \"1.0.0\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Lookup TAC",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-API-Key",
+            "value": "{{apiKey}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/v1/tac/{{tac}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["v1", "tac", "{{tac}}"]
+        },
+        "description": "Look up TAC metadata for an approved API key."
+      },
+      "response": [
+        {
+          "name": "TAC Found",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/tac/{{tac}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["v1", "tac", "{{tac}}"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": true,\n  \"data\": {\n    \"tac\": \"35693803\",\n    \"brand\": \"Apple\",\n    \"model\": \"iPhone 14 Pro\",\n    \"modelName\": \"iPhone 14 Pro\"\n  }\n}"
+        },
+        {
+          "name": "TAC Not Found",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/tac/{{tac}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["v1", "tac", "{{tac}}"]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": false,\n  \"error\": {\n    \"code\": \"TAC_NOT_FOUND\",\n    \"message\": \"Unable to check device at the moment. Please try your free check again in 24–48 hours—our device database is updated regularly.\"\n  }\n}"
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.yourdomain.com"
+    },
+    {
+      "key": "apiKey",
+      "value": "tac_live_xxxxxxxxxxxxxxxxxxxx"
+    },
+    {
+      "key": "tac",
+      "value": "35693803"
+    }
+  ]
+}

@@ -92,6 +92,7 @@ Recommended response:
 - `docs/admin-reporting.md` - what admins can see
 - `docs/openapi.yaml` - API contract
 - `docs/email-templates.md` - approval and key delivery emails
+- `docs/postman/TACDatabase.postman_collection.json` - importable Postman collection
 
 ## Recommended deployment flow
 
@@ -125,6 +126,18 @@ Recommended response:
 Open the TAC access request form here:
 
 - [Request TAC Database Access](https://imeicheckpro.com/contact#tac-access)
+
+## Postman collection
+
+If you prefer Postman, import the collection from:
+
+- [`docs/postman/TACDatabase.postman_collection.json`](docs/postman/TACDatabase.postman_collection.json)
+
+Update the collection variables after import:
+
+- `baseUrl` - your API base URL
+- `apiKey` - your issued TAC API key
+- `tac` - the 8-digit TAC you want to look up
 
 ## Positioning
 
