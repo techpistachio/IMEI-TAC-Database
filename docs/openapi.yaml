@@ -12,18 +12,20 @@ paths:
       responses:
         "200":
           description: OK
-  /v1/tac/{tac}:
+  /v1/tac/{imeiOrTac}:
     get:
-      summary: Lookup a TAC
+      summary: Lookup a TAC or IMEI
       security:
         - ApiKeyAuth: []
       parameters:
-        - name: tac
+        - name: imeiOrTac
           in: path
           required: true
           schema:
             type: string
-            pattern: '^[0-9]{8}$'
+            oneOf:
+              - pattern: '^[0-9]{8}$'
+              - pattern: '^[0-9]{14,15}$'
       responses:
         "200":
           description: TAC found
@@ -39,4 +41,3 @@ components:
       type: apiKey
       in: header
       name: X-API-Key
-

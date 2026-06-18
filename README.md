@@ -17,8 +17,9 @@ This repository is intended to explain:
 
 - how to request access from imeicheckpro.com
 - how API keys are issued
+- how the public TAC demo uses captcha-gated temporary keys
 - how rate limits and IP limits work
-- how to call the TAC lookup endpoint
+- how to call the TAC / IMEI lookup endpoint
 - how admin reporting works
 - how keys are revoked, suspended, or rotated
 
@@ -68,8 +69,10 @@ Access is not anonymous.
 
 The public API should expose only the minimum required surface area.
 
-- `GET /v1/tac/:tac`
+- `GET /v1/tac/:imeiOrTac`
 - `GET /v1/health`
+
+The website demo also mints short-lived temporary keys after a human verification challenge. Those demo keys are limited to 5 lookups and are tied to the requester IP.
 
 ## TAC not found behavior
 
@@ -137,7 +140,7 @@ Update the collection variables after import:
 
 - `baseUrl` - your API base URL
 - `apiKey` - your issued TAC API key
-- `tac` - the 8-digit TAC you want to look up
+- `imeiOrTac` - the 8-digit TAC or 14/15-digit IMEI you want to look up
 
 ## Positioning
 

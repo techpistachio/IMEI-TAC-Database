@@ -44,7 +44,7 @@
       ]
     },
     {
-      "name": "Lookup TAC",
+      "name": "Lookup TAC or IMEI",
       "request": {
         "method": "GET",
         "header": [
@@ -55,11 +55,11 @@
           }
         ],
         "url": {
-          "raw": "{{baseUrl}}/v1/tac/{{tac}}",
+          "raw": "{{baseUrl}}/v1/tac/{{imeiOrTac}}",
           "host": ["{{baseUrl}}"],
-          "path": ["v1", "tac", "{{tac}}"]
+          "path": ["v1", "tac", "{{imeiOrTac}}"]
         },
-        "description": "Look up TAC metadata for an approved API key."
+        "description": "Look up TAC metadata for an approved API key. Send either an 8-digit TAC or a 14/15-digit IMEI."
       },
       "response": [
         {
@@ -74,9 +74,9 @@
               }
             ],
             "url": {
-              "raw": "{{baseUrl}}/v1/tac/{{tac}}",
+              "raw": "{{baseUrl}}/v1/tac/{{imeiOrTac}}",
               "host": ["{{baseUrl}}"],
-              "path": ["v1", "tac", "{{tac}}"]
+              "path": ["v1", "tac", "{{imeiOrTac}}"]
             }
           },
           "status": "OK",
@@ -102,9 +102,9 @@
               }
             ],
             "url": {
-              "raw": "{{baseUrl}}/v1/tac/{{tac}}",
+              "raw": "{{baseUrl}}/v1/tac/{{imeiOrTac}}",
               "host": ["{{baseUrl}}"],
-              "path": ["v1", "tac", "{{tac}}"]
+              "path": ["v1", "tac", "{{imeiOrTac}}"]
             }
           },
           "status": "Not Found",
@@ -131,7 +131,7 @@
       "value": "tac_live_xxxxxxxxxxxxxxxxxxxx"
     },
     {
-      "key": "tac",
+      "key": "imeiOrTac",
       "value": "35693803"
     }
   ]

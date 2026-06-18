@@ -43,16 +43,16 @@ Example response:
 }
 ```
 
-### `GET /v1/tac/:tac`
+### `GET /v1/tac/:imeiOrTac`
 
-Returns TAC metadata for an 8-digit TAC.
+Returns TAC metadata for an 8-digit TAC or a 14/15-digit IMEI.
 
 This is the only data endpoint exposed by the public API.
 
 Example request:
 
 ```http
-GET /v1/tac/35693803
+GET /v1/tac/356938031234567
 X-API-Key: tac_live_xxxxxxxxxxxxxxxxxxxx
 ```
 
