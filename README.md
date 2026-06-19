@@ -1,8 +1,8 @@
-# IMEI-TAC-Database
+# IMEI TAC Database API
 
 <p align="center">
   <strong>Free TAC database access for approved users.</strong><br>
-  Public API docs, access request flow on imeicheckpro.com, and admin controls for safe distribution.
+  Public API docs, request flow on imeicheckpro.com, and admin controls for safe distribution.
 </p>
 
 <p align="center">
@@ -23,9 +23,9 @@ This repository is intended to explain:
 - how admin reporting works
 - how keys are revoked, suspended, or rotated
 
-## SEO keywords
+## Common search terms
 
-This repo is written to help people find the service on GitHub and search engines using terms like:
+People usually find this service using terms like:
 
 - TAC database
 - IMEI TAC lookup
@@ -39,7 +39,7 @@ This repo is written to help people find the service on GitHub and search engine
 
 Access is not anonymous.
 
-1. A user submits an access request from the TAC request form on [imeicheckpro.com/contact#tac-access](https://imeicheckpro.com/contact#tac-access).
+1. A user submits an access request from the TAC request form on [imeicheckpro.com/tac-access](https://imeicheckpro.com/tac-access).
 2. An admin reviews the request.
 3. If approved, the system generates an API key and emails it to the requester.
 4. The requester uses the key in the `X-API-Key` header.
@@ -73,6 +73,12 @@ The public API should expose only the minimum required surface area.
 - `GET /v1/health`
 
 The website demo also mints short-lived temporary keys after a human verification challenge. Those demo keys are limited to 5 lookups and are tied to the requester IP.
+
+## Live links
+
+- [Request TAC access](https://imeicheckpro.com/tac-access)
+- [Try the TAC API demo](https://imeicheckpro.com/tac-api)
+- [Contact support](https://imeicheckpro.com/contact)
 
 ## TAC not found behavior
 
@@ -128,7 +134,13 @@ Recommended response:
 
 Open the TAC access request form here:
 
-- [Request TAC Database Access](https://imeicheckpro.com/contact#tac-access)
+- [Request TAC Database Access](https://imeicheckpro.com/tac-access)
+
+## Demo page
+
+Open the TAC API demo here:
+
+- [TAC API Demo](https://imeicheckpro.com/tac-api)
 
 ## Postman collection
 
@@ -148,6 +160,7 @@ Use this repo publicly on GitHub to make the service easy to find, with clear fr
 
 - free of cost for approved users
 - TAC lookup only
-- public request form lives on imeicheckpro.com
+- public request form lives on imeicheckpro.com/tac-access
+- live demo page lives on imeicheckpro.com/tac-api
 - no extra API surface
 - admin-controlled key lifecycle
